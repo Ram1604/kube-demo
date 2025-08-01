@@ -28,3 +28,5 @@
 # :q - QUIT
 # :wq - SAVE & QUIT
 # :q! - QUIT without SAVE
+
+# hjkl - Navigate
