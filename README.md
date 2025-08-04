@@ -122,3 +122,47 @@ kubectl expose deployment deployment-name --type=NodePort --port=5000
 minikube service myapp-deployment --url
 ```
 #### This will open the app in your default browser or show a URL to access it.
+
+
+## 🐳 Pull Docker Image from DockerHub and Push to Google Artifact Registry to deploy it in GKE
+
+### 1. ✅ Create a Docker Repository in Artifact Registry
+
+```bash
+gcloud artifacts repositories create REPO_NAME \
+  --repository-format=docker \
+  --location=us-central1 \
+  --description="Docker repository"
+```
+### 2. 🔐 Authenticate Docker to Artifact Registry
+
+```bash
+gcloud auth configure-docker us-central1-docker.pkg.dev
+```
+
+### 3. 📥 Pull the Docker Image from DockerHub
+
+```bash
+docker pull DOCKERHUB_USERNAME/IMAGE_NAME:TAG
+```
+
+### 4. 🔍 Verify the Image Exists Locally
+
+```bash
+docker images
+```
+
+### 5. 🏷️ Tag the Image for Artifact Registry
+
+```bash
+docker tag DOCKERHUB_USERNAME/IMAGE_NAME:TAG \
+  us-central1-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE_NAME:TAG
+```
+### 6. 🚀 Push the Image to Artifact Registry
+
+```bash
+docker push us-central1-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE_NAME:TAG
+```
+
+
+
