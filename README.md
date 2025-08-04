@@ -66,5 +66,3 @@ vim filename
 | `j` | Move down  |
 | `k` | Move up    |
 | `l` | Move right |
-
-docker push yourdockerhubusername/myapp:latest
