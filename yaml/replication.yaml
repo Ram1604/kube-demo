@@ -1,0 +1,18 @@
+apiVersion: v1 #apiversion
+kind: ReplicationController #object type
+metadata:
+  name: hello-rc #name of the pod
+spec: #specification of the pod
+  replicas: 10 #number of replicas
+  selector: #selector for the pod
+    app: hello-world
+  template: #template for the pod
+    metadata:
+      labels: #labels for the pod
+        app: hello-world
+    spec: #specification of the pod
+      containers: #list of containers in the pod
+      - name: hello-container
+        image: ram11doc/kube-demo:latest 
+        ports:
+        - containerPort: 5000
