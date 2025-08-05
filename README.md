@@ -163,3 +163,115 @@ docker tag DOCKERHUB_USERNAME/IMAGE_NAME:TAG \
 ```bash
 docker push us-central1-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE_NAME:TAG
 ```
+
+# 📘 Kubernetes kubectl Commands Guide
+
+## This guide provides basic `kubectl` commands for working with **pods**, **deployments**, and **services** in a Kubernetes cluster.
+
+---
+
+###  1. List the Nodes
+
+```bash
+kubectl get nodes
+```
+
+---
+
+###  2. List the Pods
+
+```bash
+kubectl get pods
+```
+
+---
+
+###  3. Create a Pod from YAML
+
+```bash
+kubectl create -f deployment1.yaml
+```
+
+#### Example `deployment1.yaml`
+
+```yaml
+apiVersion: v1        # API version
+kind: Pod             # Object type
+metadata:
+  name: hello-pod     # Name of the pod
+  labels:             # Labels for the pod
+    version: v1
+    zone: prod
+spec:                 # Specification of the pod
+  containers:         # List of containers in the pod
+  - name: hello-container
+    image: ram11doc/kube-demo:latest
+    ports:
+    - containerPort: 8080
+```
+
+---
+
+###  4. Delete a Pod
+
+```bash
+kubectl delete pod pod_name
+```
+
+---
+
+###  5. Get a Specific Pod
+
+```bash
+kubectl get pods/pod_name
+```
+
+---
+
+###  6. List All Pods Across All Namespaces
+
+```bash
+kubectl get pods --all-namespaces
+```
+
+---
+
+###  7. Update a YAML Resource
+
+```bash
+kubectl apply -f filename.yaml
+```
+
+---
+
+# 🛠️ Working with Services
+
+### 1. Create a Service
+
+### For a Replication Controller:
+
+```bash
+kubectl expose rc <rc_name> --name=<service_name> --target-port=5000 --type=NodePort
+```
+
+### For a Deployment:
+
+```bash
+kubectl expose deployment <deployment_name> --type=NodePort --target-port=5000
+```
+
+---
+
+###  2. Describe a Service
+
+```bash
+kubectl describe svc <service_name>
+```
+
+---
+
+###  3. Create a Service Declaratively
+
+```bash
+kubectl create -f service.yaml
+```
