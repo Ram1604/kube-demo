@@ -163,6 +163,3 @@ docker tag DOCKERHUB_USERNAME/IMAGE_NAME:TAG \
 ```bash
 docker push us-central1-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE_NAME:TAG
 ```
-
-
-
