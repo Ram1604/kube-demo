@@ -3,7 +3,7 @@ kind: ReplicationController #object type
 metadata:
   name: hello-rc #name of the pod
 spec: #specification of the pod
-  replicas: 10 #number of replicas
+  replicas: 1 #number of replicas
   selector: #selector for the pod
     app: hello-world
   template: #template for the pod
