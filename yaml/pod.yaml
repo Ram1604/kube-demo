@@ -1,0 +1,13 @@
+apiVersion: v1 #apiversion
+kind: Pod #object type
+metadata:
+  name: hello-pod #name of the pod
+  labels: #labels for the pod
+    version: v1
+    zone: prod
+spec: #specification of the pod
+  containers: #list of containers in the pod
+  - name: hello-container
+    image: ram11doc/kube-demo:latest 
+    ports:
+    - containerPort: 5000
